@@ -1,0 +1,8 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      MY_VAR: ${{ vars.TEST_VARIABLE }}
+
+    steps:
+      - run: echo "Env var: $MY_VAR"
