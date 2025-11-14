@@ -1,0 +1,18 @@
+name: Secret Exercise Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  show-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a masked sample
+        run: echo "The secret starts with:${MY_SECRET:0:3}"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+
+      - name: Show how GitHub masks secrets
+        run: echo "Secret value is:$MY_SECRET"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
