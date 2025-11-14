@@ -13,4 +13,4 @@ jobs:
 
     steps:
       - name: Print variable
-        run: echo "Env var:$MY_VAR"
+        run: echo "Env var, pipeline passed:$MY_VAR"
