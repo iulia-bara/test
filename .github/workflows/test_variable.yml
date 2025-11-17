@@ -1,3 +1,10 @@
+name: Demo Variable Workflow
+
+on:
+  push:
+    branches:
+      - test_variable
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -5,4 +12,5 @@ jobs:
       MY_VAR: ${{ vars.TEST_VARIABLE }}
 
     steps:
-      - run: echo "Env var: $MY_VAR"
+      - name: Print variable
+        run: echo "Env var, pipeline passed:$MY_VAR"
