@@ -1,0 +1,47 @@
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: course-catalog-service
+#spec:
+#  replicas: 2
+#  selector:
+#    matchLabels:
+#      app: course-catalog-service
+#  template:
+#    metadata:
+#      labels:
+#        app: course-catalog-service
+#    spec:
+#      containers:
+#        - name: course-catalog-service
+#          image: course-catalog-service:1.0
+#          ports:
+#            - containerPort: 8080
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: course-catalog-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course-catalog-service
+  template:
+    metadata:
+      labels:
+        app: course-catalog-service
+    spec:
+      containers:
+        - name: course-catalog-service
+          image: course-catalog-service:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/courses
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: postgres
+
