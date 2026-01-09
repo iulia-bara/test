@@ -1,0 +1,31 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: connector-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        spring.json.trusted.packages: "*"
+        spring.json.value.default.type: com.example.demo.model.InputMessage
+        spring.json.use.type.headers: false
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+
+kafka:
+  topic:
+    input: input-topic
+    output: output-topic
+
+http:
+  endpoint:
+    url: https://spendle-bk-service-251031285772.europe-west4.run.app/api/v1/specialRequest/me
+    bearer-token: eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJISU1CUUttR3BHbVlGQVdiSm1WUkNXMHAxMnBGbXdNZWk0V29uYS1QM2hFIn0.eyJleHAiOjE3Njc5NjUxNDMsImlhdCI6MTc2Nzk2MTU0MywianRpIjoiNTE5YmJkNDItNjllOC00ZmRjLWJjNjgtZjc0NzIwYzczYzFjIiwiaXNzIjoiaHR0cHM6Ly9rZXljbG9hay5kZXYuZGlnaXRhbGJhcm4uZGUvYXV0aC9yZWFsbXMvc3BlbmRsZSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1ZGZkZmVhYS02M2E5LTRlMmUtOWQ4Mi0xOWZhZGRiNWY1NjAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzcGVuZGxlLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiI0NWRhMjlkMS0zMmU0LTRmNzQtYjlkZi1iMzk3ZDFkOGNmZDQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC8qIiwiaHR0cHM6Ly9zcGVuZGxlLWJrLXNlcnZpY2UtMjUxMDMxMjg1NzcyLmV1cm9wZS13ZXN0NC5ydW4uYXBwLyoiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLXNwZW5kbGUtY2xpZW50Il19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6IjQ1ZGEyOWQxLTMyZTQtNGY3NC1iOWRmLWIzOTdkMWQ4Y2ZkNCIsIm9jY3VwYXRpb24iOnsicm9sZSI6Ik1vYmlsZSBEZXZlbG9wZXIiLCJ0eXBlIjoiRW1wbG95ZWUiLCJsZXZlbCI6Ik1pZCIsImRlcGFydG1lbnQiOiJNb2JpbGUiLCJzdGFydF9kYXRlIjoiMjAyNC0xMS0wMSIsImdlbmRlciI6Im1hbGUifSwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJEYW5pZWwgTWFuZGVhIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidmFsaWRfdGVzdF91c2VyIiwiZ2l2ZW5fbmFtZSI6IkRhbmllbCIsImZhbWlseV9uYW1lIjoiTWFuZGVhIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIn0.IMDsZZ-D3ZB78pIC4ecujiwGHxWr_F5GgTxvmkmYaNhkRwbR5HusaU77fdAgQR4orfax3fQ4F0XfxOg1Qo1l1b1JD1YYmb1au_JXvYDtLoe7VkNEBPP0K7K30eR6b3TwPrl6ZUKAonolFCSD1rFfwYV8dcetwTWAKZGeefjK4jyDs1K2SQIxskgyp9TEcmScefFW86z_U2bcqcxDhxz1swP1asNX4A4t7mYaBl0dwl1y2yC6iktOe0QHJpoTjlZXgrMg-beFPYcPODgocf_ZVuLJtOY-DpIOjzwbz6fAoxU9Ys23OyiG2ZDmQDY7ck843B_oZ9zm0-M7gxDHX9EryQ
+
+server:
+  port: 8080
